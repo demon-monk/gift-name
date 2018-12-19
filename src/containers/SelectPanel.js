@@ -5,6 +5,7 @@ import Input from '../components/Input';
 import Wizard from '../components/Wizard'
 import Button from '../components/Button'
 import axios from 'axios'
+import {formatRawResult} from '../utils'
 import './SelectPanel.less'
 
 const SelectStatus = {
@@ -65,8 +66,8 @@ export default class SelectPanel extends Component {
                 gender: this.state.gender,
                 tag: this.state.condiment
             }
-        ).then(() => {
-            // go to result
+        ).then((result) => {
+            this.props.onResultLoaded(result.ennames.map(formatRawResult))
         })
     }
 
