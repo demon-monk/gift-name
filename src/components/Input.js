@@ -6,7 +6,7 @@ export default (props) => {
             className="comp-input"
             placeholder={props.placeholder}
             onChange={props.onChange}
-
+            value={props.value}
         />
     )
 }
