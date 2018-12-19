@@ -4,6 +4,7 @@ import Tag from '../components/Tag';
 import Input from '../components/Input';
 import Wizard from '../components/Wizard'
 import Button from '../components/Button'
+import axios from 'axios'
 import './SelectPanel.less'
 
 const SelectStatus = {
@@ -57,7 +58,16 @@ export default class SelectPanel extends Component {
     }
     
     submitParams = () => {
-
+        axios.post(
+            'https://hackthon-name.thellsapi.com/post',
+            {
+                name: this.state.name,
+                gender: this.state.gender,
+                tag: this.state.condiment
+            }
+        ).then(() => {
+            // go to result
+        })
     }
 
     gotoCondiment = () => {
@@ -68,7 +78,7 @@ export default class SelectPanel extends Component {
 
     renderBasicsPanel () {
         return (
-            <div class="select-panel-panel">
+            <div className="select-panel-panel">
                 <Wizard isWave/>
                 <Block>
                     <div className="select-panel-row">
