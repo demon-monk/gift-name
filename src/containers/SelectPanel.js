@@ -4,6 +4,7 @@ import Tag from '../components/Tag';
 import Input from '../components/Input';
 import Wizard from '../components/Wizard'
 import Button from '../components/Button'
+import Loading from '../components/Loading'
 import axios from 'axios'
 import {formatRawResult} from '../utils'
 import './SelectPanel.less'
@@ -25,6 +26,7 @@ export default class SelectPanel extends Component {
         super(props)
         this.state = {
             status: SelectStatus.BASIC,
+            isLoading: false,
             titleIndex: 0,
             gender: null,
             name: '',
@@ -59,6 +61,7 @@ export default class SelectPanel extends Component {
     }
     
     submitParams = () => {
+        this.setState({isLoading: true})
         axios.post(
             'https://hackthon-name.thellsapi.com/post',
             {
@@ -68,6 +71,8 @@ export default class SelectPanel extends Component {
             }
         ).then((result) => {
             this.props.onResultLoaded(result.ennames.map(formatRawResult))
+        }, (err) => {
+            this.setState({isLoading: false})
         })
     }
 
@@ -131,6 +136,7 @@ export default class SelectPanel extends Component {
             <div className="select-panel">
                 {this.state.status === SelectStatus.BASIC && <div className="select-panel-title">{titles[titleIndex]}</div>}
                 {this.state.status === SelectStatus.BASIC ? this.renderBasicsPanel() : this.renderCondimentPanel()}
+                {this.state.isLoading && <Loading/>}
             </div>
         )
     }
