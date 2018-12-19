@@ -1,0 +1,41 @@
+.comp-result-card {
+  box-sizing: border-box;
+  overflow: scroll;
+  height: 411px;
+  padding: 30px 20px 60px;
+  text-align: left;
+  background: #fff;
+  border-radius: 30px;
+  .row {
+    margin-bottom: 15px;
+  }
+  .title {
+    .row;
+    font-size: 36px;
+    line-height: 50px;
+  }
+  .data {
+    .row;
+    color: #fff;
+    font-size: 14px;
+    line-height: 31px;
+    // text-align: center;
+    .data-item {
+      display: inline-block;
+      padding: 0 10px;
+      margin-right: 10px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .data-match {
+      .data-item;
+      background-color: #43dcf6;
+    }
+
+    .data-rarity {
+      .data-item;
+      background-color: #ff7878;
+    }
+  }
+}
