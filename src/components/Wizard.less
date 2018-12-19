@@ -1,0 +1,60 @@
+.comp-wizard {
+  position: relative;
+  height: 120px;
+  .wizard-head {
+    position: absolute;
+    left: 64px;
+    width: 76px;
+    height: 121px;
+    background-image: url("../imgs/head_smile.png");
+    background-size: contain;
+  }
+
+  .wizard-body {
+    position: absolute;
+    top: 10px;
+    z-index: -1;
+    display: inline-block;
+    height: 115px;
+    background-size: cover;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  .wizard-body-wave {
+    .wizard-body;
+    width: 215px;
+    animation-name: wave;
+  }
+
+  .wizard-body-magic {
+    .wizard-body;
+    left: 10px;
+    width: 241px;
+    animation-name: magic;
+  }
+}
+
+@keyframes wave {
+  from {
+    background-image: url("../imgs/body_wave_1.png");
+  }
+  50% {
+    background-image: url("../imgs/body_wave_2.png");
+  }
+  to {
+    background-image: url("../imgs/body_wave_1.png");
+  }
+}
+
+
+@keyframes magic {
+  from {
+    background-image: url("../imgs/add_tag_1.png");
+  }
+  50% {
+    background-image: url("../imgs/add_tag_2.png");
+  }
+  to {
+    background-image: url("../imgs/add_tag_1.png");
+  }
+}
