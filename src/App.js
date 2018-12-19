@@ -5,6 +5,8 @@ import Button from './components/Button'
 import Input from './components/Input'
 import Wizard from './components/Wizard'
 import SelectPanel from './containers/SelectPanel'
+import Slider from './components/slider'
+
 import './App.less'
 class App extends Component { 
   render() {
@@ -22,7 +24,14 @@ class App extends Component {
           <Input placeholder="请输入中文全名" />
           <Button>下一步</Button>
         </Block> */}
-        <SelectPanel />
+        {/* <SelectPanel /> */}
+        {/* <div style={{position:'relative',overflow:'hidden', width: '300px'}}>
+          <Slider auto={false}>
+            {
+              [1,2,3].map((item) => <div style={{width: '300px',height: '200px', background:'#fff'}}>{'some long text'}</div>)
+            }
+          </Slider>
+        </div> */}
       </div>
     )
   }
