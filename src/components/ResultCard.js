@@ -11,14 +11,14 @@ export default (props) => {
         <div className="comp-result-card">
             <div className="title">
                 <span className="title-item">{capitalize(props.name)}</span>
-                <Speaker src={props.src} />
+                <Speaker src={`http://pjzm4dpxv.bkt.clouddn.com/${props.name}.mp3`} />
             </div>
             <div className="data">
                 <span className="data-match">匹配度 {formatPercent(props.match)}</span>
                 <span className="data-rarity">稀有度 SR</span>
             </div>
             <div className="explanation">
-                含义: ${props.explanation}
+                {`含义: ${props.explanation}`}
             </div>
         </div>
     )

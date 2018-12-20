@@ -8,11 +8,12 @@ export function formatPercent(num) {
 
 
 export function formatRawResult (rawResult) {
+    let {score} = rawResult
     return {
         name: rawResult.name,
-        gender: rawResult.extra.gender,
-        src: rawResult.extra.src,
-        match: rawResult.extra.match,
-        explanation: rawResult.extra.meaning_export,
+        gender: rawResult.extra && rawResult.extra.gender,
+        src: rawResult.extra && rawResult.extra.src,
+        match: score,
+        explanation: rawResult.extra && rawResult.extra.meaning_expert,
     }
 }

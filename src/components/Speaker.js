@@ -11,6 +11,7 @@ export default class Speaker extends Component {
 
     componentDidMount () {
         this.audioDom = this.myRef.current.getElementsByTagName('audio')[0]
+        this.audioDom.play()
     }
 
     onClick = () => {

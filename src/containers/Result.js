@@ -10,7 +10,7 @@ export default (props) => {
             <div className="slider-wrapper">
                 <div className="old-man"></div>
                 <Slider auto={false}>
-                   { props.results.map((result) => <ResultCard {...result} />)}
+                   { props.results.map((result) => <ResultCard key={result.name} {...result} />)}
                 </Slider>
             </div>
             <button onClick={props.onPlayAgain}>再玩一次</button>

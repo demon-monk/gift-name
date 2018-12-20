@@ -35,11 +35,15 @@ export default class SelectPanel extends Component {
     }
 
     componentDidMount () {
-        setInterval(() => {
+        this.intervalId = setInterval(() => {
             this.setState({
                 titleIndex: this.state.titleIndex + 1
             })
         }, 1500)
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.intervalId)
     }
 
     onClickGenderTag = (value) => {
@@ -62,14 +66,17 @@ export default class SelectPanel extends Component {
     
     submitParams = () => {
         this.setState({isLoading: true})
+        // setTimeout(() => {
+        //     this.setState({isLoading: false})
+        // }, 2000)
         axios.post(
-            'https://hackthon-name.thellsapi.com/post',
+            'https://hackathon-name.thellsapi.com/post',
             {
                 name: this.state.name,
                 gender: this.state.gender,
                 tag: this.state.condiment
             }
-        ).then((result) => {
+        ).then(({data: result}) => {
             this.props.onResultLoaded(result.ennames.map(formatRawResult))
         }, (err) => {
             this.setState({isLoading: false})
@@ -106,7 +113,7 @@ export default class SelectPanel extends Component {
 
     renderCondimentPanel () {
         return (
-            <div class="select-panel-panel">
+            <div className="select-panel-panel">
                 <Wizard/>
                 <Block>
                     <div className="select-panel-row">
@@ -116,7 +123,7 @@ export default class SelectPanel extends Component {
                     </div>
                     <div className="select-panel-block">
                         {condiments.map((condiment) => (
-                            <div className="select-panel-tag-wrapper">
+                            <div key={condiment} className="select-panel-tag-wrapper">
                                 <Tag value={condiment} onClick={this.onClickCondimentTag} active={this.state.condiment === condiment}>{condiment}</Tag>
                             </div>
                         ))}
